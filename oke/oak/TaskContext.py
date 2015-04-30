@@ -25,6 +25,7 @@ class ContextEntity():
         self.referenceContext=""
         self.beginIndex=""
         self.endIndex=""
+        #dbpedia URI
         self.taIdentRef=""
         #a list of types the entity belongs to e.g., dbpedia:Brian_Banner a oke:FictionalVillain, oke:Villain
         self.isInstOfEntityClasses=None
@@ -37,4 +38,5 @@ class EntityClass():
         self.referenceContext=""
         self.beginIndex=""
         self.endIndex=""
+        #e.g., subClassOf: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person
         self.subClassOf=""      

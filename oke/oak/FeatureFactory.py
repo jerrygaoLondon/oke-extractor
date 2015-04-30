@@ -19,6 +19,30 @@ class FeatureFactory(object):
     '''
     dataProcessor=None
     wordnet_lemmatizer=None
+    
+    #http://stlab.istc.cnr.it/stlab/WikipediaOntology/
+    #dul class with representative words for similarity comparison
+    dul_ontology_classes={'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Abstract':['Abstract'], 'd0:Activity':['Action','activity','task'],
+                          'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Amount':['Amount','quantity'], 'd0:Characteristic':['Quality','feature','attribute'],
+                          'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection':['Collection','group'],
+                              'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#CognitiveEntity':['Attitudes','cognitive','ideologies','mind'],
+                              'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description':['Conceptualization','description','context'],
+                              'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Event':['event'],
+                              'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Goal':['Goal','aim','achievement'],
+                              'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity':['knowledge','creative'],
+                              'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Location':['Place','space'],
+                              'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization':['Organization'],
+                              'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism':['Organism','animal','plant'],
+                              'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person':['Person'],
+                              'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Personification':['Personification','Fictional','imaginary'],
+                              'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject':['artifacts'],
+                              'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Process':['process'],'dul:Relation':['relation'],
+                              'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Role':['role','position'],
+                              'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation':['situation','condition','circumstance','state'],
+                              'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#System':['System'],
+                              'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval':['time','interval'],
+                              'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Topic':['discipline','topic']}
+        
     def __init__(self):
         '''
         initialise NIF2RDF Data processor and load training data
@@ -35,6 +59,7 @@ class FeatureFactory(object):
         self.stoplist |= set(self.read_by_line('stoplist'))
         
         #load gazetteers
+        #Gazetteer and trigger word features for relation extraction
         self.gaz_country=set()
         self.gaz_country |= set(self.read_by_line('gazetteer/country_lower.lst'))
         
@@ -85,7 +110,13 @@ class FeatureFactory(object):
         self.gaz_facility_key = set(map(str.lower,self.gaz_facility_key))
         print("gazetteers are loaded!")
         
-    
+    def is_matched(self, _string, gaz_set):
+        '''
+        return True if _string is matched by one of element in gaz_set
+        '''
+        first_matched=[gaz_str for gaz_str in gaz_set if gaz_str in _string.lower().split(' ') or _string.lower() in gaz_str.split(' ')]
+        return len(first_matched) >0
+        
     def export_to_features(self,json_file):
         print("start to load training data and compute training features...")
         
@@ -138,20 +169,151 @@ class FeatureFactory(object):
                 datum.features=json_data['_features']
                 
                 data.append(datum)
-        return data        
+        return data
+    
+    def compute_features_ontology_alignment(self, context_data):
+        '''
+        param:
+        context_data : TaskContext
+        '''
+        if type(context_data) is not TaskContext:
+            raise Exception('Type error: context_data must be the instance of oke.oak.TaskContext')
+        
+        entity_dbpedia_URI = context_data.entity.taIdentRef
+        entityClasses = context_data.entity.isInstOfEntityClasses
+        
+        datums=[]
+        
+        for entityClass in entityClasses:
+            subClassOf=entityClass.subClassOf
+            
+            datum = Datum(entityClass.uri,entityClass.anchorOf,subClassOf)
+            features={}
+            
+            entity_rdftypes = self.dbpedia_query_rdftypes(entity_dbpedia_URI)
+            #entity_rdf_typename=set([self.get_URI_fragmentIdentifier(rdftype_uri) for rdftype_uri in entity_rdftypes])
+            for type_uri in entity_rdftypes:
+                features[type_uri]=self.get_URI_fragmentIdentifier(type_uri)
+                
+            features["last_3_letters"]='None' if len(str(entityClass.anchorOf))<3 or str(entityClass.anchorOf).isdigit() else str(entityClass.anchorOf)[-3:]
+            features['last_word']=entityClass.anchorOf.split(' ')[-1:]
+            features["is_entity_personName"]='Y' if self.is_matched(context_data.entity.anchorOf, self.gaz_person_name) else 'N'
+            features["is_entity_country"]='Y' if self.is_matched(context_data.entity.anchorOf, self.gaz_country) else 'N'
+            features["is_entity_facKey"]='Y' if self.is_matched(context_data.entity.anchorOf, self.gaz_facility_key) else 'N'
+            features["is_entity_orgKey"]='Y' if self.is_matched(context_data.entity.anchorOf, self.gaz_org_key) else 'N'
+            features["is_entity_locKey"]='Y' if self.is_matched(context_data.entity.anchorOf, self.gaz_loc_key) else 'N'
+            
+            #shortest path similarity (wordnet is-a (hypernym/hypnoym) taxonomy connection)
+            datum.features=features
+            datums.append(datum)
+            
+    def get_URI_fragmentIdentifier(self, uri_string):
+        '''
+        return URI fragment identifier (e.g., 'Agent' for 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent').
+        if no fragment identifier identified, return the last words from '/' splitted tokens
+        '''
+        from urllib.parse import urlparse
+        parsedURI = urlparse(uri_string)
+        fragmentIdentifer=parsedURI.fragment
+        if fragmentIdentifer == '':
+            uri_tokens=uri_string.split('/')
+            fragmentIdentifer=uri_tokens[-1:][0]
+        return fragmentIdentifer
+        
+    def dbpedia_query_rdftypes(self, entity_dbpedia_URI, endpoint="http://dbpedia.org/sparql"):
+        '''
+        query rdf types in dbpedia dataset
+        return rdf type URI set
+        '''
+        query="select ?type where { {<%s> a ?type . FILTER(?type != owl:Thing)} " % entity_dbpedia_URI
+        query+= " union {<%s> dbpedia-owl:wikiPageRedirects ?entity . ?entity rdf:type ?type . FILTER(?type != owl:Thing)} " % entity_dbpedia_URI
+        query+=" } "
+        results = self.dbpedia_query(query)
+        
+        entity_rdftypes=set()
+        for results in results["results"]["bindings"]:
+            entity_rdftypes.add(results['type']['value'])
+        return entity_rdftypes            
+    
+    def dbpedia_query_dcterm_subject(self, entity_dbpedia_URI, endpoint="http://dbpedia.org/sparql"):
+        '''
+        query rdf types in dbpedia dataset
+        return rdf type URI list
+        '''
+        query="select ?subject_label where {<%s> dcterms:subject ?subject . ?subject rdfs:label ?subject_label .}" % entity_dbpedia_URI
+        results = self.dbpedia_query(query)
+        
+        entity_rdftypes=set()
+        for results in results["results"]["bindings"]:
+            entity_rdftypes.add(results['subject_label']['value'])
+        return entity_rdftypes
+         
+    def dbpedia_query(self,sparql_query,endpoint="http://dbpedia.org/sparql"):
+        '''
+        return results in json format
+        example:
+        {'head': {'link': [], 'vars': ['type']}, 
+         'results': {'distinct': False, 'ordered': True, 
+             'bindings': [{'type': {'value': 'http://schema.org/Organization', 'type': 'uri'}}, 
+                         {'type': {'value': 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'type': 'uri'}}, 
+                         {'type': {'value': 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson', 'type': 'uri'}}, 
+                         {'type': {'value': 'http://dbpedia.org/ontology/Agent', 'type': 'uri'}},
+                         {'type': {'value': 'http://dbpedia.org/ontology/MilitaryUnit', 'type': 'uri'}}, 
+                         {'type': {'value': 'http://dbpedia.org/ontology/Organisation', 'type':'uri'}}]}}
+        '''
+        from SPARQLWrapper import SPARQLWrapper, JSON
+        sparql = SPARQLWrapper(endpoint)
+        
+        sparql.setQuery(sparql_query)
+        sparql.setReturnFormat(JSON)
+        results = sparql.query().convert()
+        return results
+        
+        
+    def levenshtein_similarity(self,str1,str2):
+        '''
+        Implements the basic Levenshtein algorithm providing a similarity measure between two strings
+        return actual / possible levenstein distance to get 0-1 range normalised by the length of the longest sequence
+        '''
+        #sim_score=self.load_sim_from_memory(str1, str2)
+        #if sim_score is None:
+        from distance import nlevenshtein
+        dist=nlevenshtein(str1, str2, method=1)
+        sim_score= 1 - dist
+        
+        return sim_score    
         
     def compute_features(self, context_data):
+        from oke.oak.util import wordnet_shortest_path
+        from oke.oak.util import extract_type_label
         #words, contextURI, previousLabel, position
         if type(context_data) is not TaskContext:
             raise Exception('Type error: context_data must be the instance of oke.oak.TaskContext')
         
-        #currentWord=words
-        
         context_words=word_tokenize(context_data.isString)
         tagged_context=pos_tag(context_words)
-        sem_tagged_context=self.sem_tag(context_words,context_data)
+        sem_tagged_context=self.sem_tag(context_words,context_data)        
         
+        entity_name=context_data.entity.anchorOf
+        entity_head_word=entity_name.split(' ')[-1:][0]
+        entity_dbpedia_URI = context_data.entity.taIdentRef
+        #print("entity_dbpedia_URI:"+entity_dbpedia_URI)
+        import SPARQLWrapper
+        try:
+            entity_rdftypes = self.dbpedia_query_rdftypes(entity_dbpedia_URI,endpoint="http://galaxy.dcs.shef.ac.uk:8893/sparql")
+        except SPARQLWrapper.SPARQLExceptions.EndPointInternalError:
+            print("EndPointInternalError: try default dbpedia endpoint next...")
+        entity_rdftypes.update(self.dbpedia_query_rdftypes(entity_dbpedia_URI))
+        #print("entity_rdftypes:",entity_rdftypes)
+        
+        if (len (entity_rdftypes) == 0):
+            print("Warn: No rdf types can be found for [current word")#entity_name.decode("utf8"),"]")
+        entity_semantics=set()
+        entity_semantics.update(set([extract_type_label(self.get_URI_fragmentIdentifier(rdftype_uri)) for rdftype_uri in entity_rdftypes]))
         #print('sem_tagged_context:',sem_tagged_context)
+        #add head word into rdf type
+        entity_semantics.add(entity_head_word)
+        #print("entity_semantics:",entity_semantics)
         datums=[]
         
         #compute features for each word
@@ -192,6 +354,10 @@ class FeatureFactory(object):
             features["is_personTitle"] = 'Y' if currentWord.lower() in self.gaz_person_title else 'N'
             features['is_jobtitle']='Y' if currentWord.lower() in self.gaz_job_title else 'N'
             features['is_facKey']='Y' if currentWord.lower() in self.gaz_facility_key else 'N'
+            
+            #add feature to compute path similarity between dbpedia type and current word
+            max_sim = max([wordnet_shortest_path(currentWord,sem_type.split(' ')[-1:][0]) for sem_type in entity_semantics])
+            features['max_path_similarity_with_dbpediaType'] = max_sim
             
             for last_i in range(1,sliding_window_prev_n_words):
                 #features['prev_'+str(last_i)+'_word']=datums[currentIndex-last_i].features['word'] if (currentIndex-last_i) in range(0,len(datums)) else 'None'
@@ -312,6 +478,6 @@ if __name__ == '__main__':
     me_classifier = MaxentClassifier.train(train_set)
     predit_label=me_classifier.classify({'word': 'conference', 'word_root': 'conference', 'word_pos': 'NN', 'isEntity': 'N', 'isStopWord': 'N', 'prev_word_isStopWord': 'N'})
     print('predicted label:',predit_label)
-    print('========Show top 5 most informative features========')
-    me_classifier.show_most_informative_features(5)
+    print('========Show top 10 most informative features========')
+    me_classifier.show_most_informative_features(10)
         
