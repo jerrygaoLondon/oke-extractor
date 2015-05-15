@@ -12,6 +12,8 @@ class ConceptRecogniser(object):
     '''
 
     stoplist=set()
+    _classifier=None
+    
     def __init__(self):
         '''
         Constructor
@@ -21,8 +23,104 @@ class ConceptRecogniser(object):
             #The union operator is much faster than add
             self.stoplist |= set(stopwords.words('english'))
             self.stoplist |= set(self.read_by_line('stoplist'))
+    
+    def type_extraction_and_interlink(self, nif_content):
+        '''
+        Type prediction and alignment
+        More details refer to J.Gao and S. Mazumdar. Exploiting Linked Open Data to Uncover Entity Types
         
-    def MEclassifier_class_extraction(self,compute_feature=False, is_train=True):
+        Input(n3) -> Parsing & Processing -> Feature Extraction -> Feature set -> classifier 
+            -> predicted classes -> type annotation -> alignment -> alignment annotation
+        return enriched results in n3    
+        '''
+        print("==========type_extraction_and_interlink============")
+        print(type(nif_content))
+        if nif_content == "" or nif_content is None:
+            raise Exception("No content to extract")
+            return
+        
+        contextDict, graph_in_memory = self.parse_and_processing(nif_content)
+        
+        from oke.oak.typeAnnotator import TypeAnnotator
+        from oke.oak.dulOntologyAligner import DulOntologyAligner
+        from oke.oak.nif2rdfProcessor import NIF2RDFProcessor
+        
+        dataProcessor = NIF2RDFProcessor() 
+        typeAnnotator=TypeAnnotator()
+        dulOntologyAligner=DulOntologyAligner()
+        
+        for context, context_sent in contextDict.items():
+            datums,context_data = self.feature_extraction_for_prediction(graph_in_memory, context, context_sent)
+            
+            predicted_classes = self.prediction_on_feature_set(datums)
+            
+            print("predicted class for current context: ",predicted_classes)
+            typeAnnotator.type_annotation(graph_in_memory,context_data, predicted_classes)
+            
+            #reload graph
+            context_data=dataProcessor.aggregate_context_data(graph_in_memory,context,context_sent) 
+            suggested_dul_alignments=dulOntologyAligner.ontology_alignment(context_data)
+            print("suggested_dul_alignments:", suggested_dul_alignments)
+            typeAnnotator.type_alignment_annotation(graph_in_memory, context_data, suggested_dul_alignments)          
+        
+        return graph_in_memory.serialize(format='n3')
+                
+    def parse_and_processing(self, nif_content):
+        '''
+            parsing&processing in prediction phase
+        '''
+        from oke.oak.nif2rdfProcessor import NIF2RDFProcessor
+        dataProcessor = NIF2RDFProcessor()
+        graph_in_memory=dataProcessor.load_rdf_from_content(nif_content, _format='n3')
+             
+        dataProcessor.validate_graph_in_memory(graph_in_memory)
+        
+        contextDict = dataProcessor.get_task_context(graph_in_memory)
+        total_test_size=len(contextDict)
+        print("total test context: [",total_test_size,"]")
+        
+        return (contextDict,graph_in_memory)
+    
+    def feature_extraction_for_prediction(self, graph_in_memory, context, context_sent):
+        '''
+        feature extraction for current context task in prediction phase
+        '''
+        from oke.oak.nif2rdfProcessor import NIF2RDFProcessor
+        from oke.oak.FeatureFactory import FeatureFactory
+        
+        dataProcessor = NIF2RDFProcessor()
+        featureFactory = FeatureFactory()
+        
+        context_data=dataProcessor.aggregate_context_data(graph_in_memory,context,context_sent)
+        datums=featureFactory.compute_features(context_data)
+        
+        return (datums,context_data)
+    
+    def prediction_on_feature_set(self, datums):
+        '''
+        Predict type (entity class) based on feature set
+        '''
+        class_label="class"
+        predicted_class=[]
+        #load classifier only once
+        if not self._classifier:
+            self._classifier=self.MEclassifier_model(compute_feature=False,is_train=False)
+            
+        _temp_class_token=[]
+        for datum in datums:
+            #(i) identify the type(s) of the given entity as they are expressed in the given definition
+            predicted_label = self._classifier.classify(datum.features)
+            #print("word ",datum.word,"|pos:",datum.features["word_pos"]," -> predicted class:",predicted_label)            
+            #a nasty way to get continuous label, possibly need to change to BIO label
+            if predicted_label == class_label:
+                _temp_class_token.append((datum.word,datum.features["word_pos"]))
+            else:
+                if _temp_class_token:
+                    predicted_class.append(_temp_class_token)
+                    _temp_class_token=[]
+        return predicted_class
+        
+    def MEclassifier_model(self,compute_feature=False, is_train=True):
         '''
         Maximum entropy based classifier for Class Induction
         '''
@@ -42,172 +140,55 @@ class ConceptRecogniser(object):
         print("train set size",len(train_set))
         
         if is_train:
-            self.train(train_set)
+            class_classifier=self.train(train_set)
         else:
-            class_classifier=self.load_classifier_model(classifier_pickled="class_inducer_0.67.m")
+            class_classifier=self.load_classifier_model(classifier_pickled="me_class_inducer.m")
         
-        return None
+        return class_classifier
     
-    def ontology_alignment(self,compute_feature=False, is_train=False):
-        '''
-        ontology alignment for DOLCE+DnS Ultra Lite classes
-            : query for dbpedia rdf types -> wordnet path similarity (is-a taxonomy) matching
-        '''
-        from oke.oak.FeatureFactory import FeatureFactory
-        from oke.oak.util import extract_type_label
-        
-        featureFactory = FeatureFactory()
-        
-        import collections
-        refsets = collections.defaultdict(set)
-        testsets = collections.defaultdict(set)
-        
-        contextDict = featureFactory.dataProcessor.get_task_context(featureFactory.dataProcessor.graphData_goldstandards)
-        entityset=set()
-        dulclassset=set()
-        without_duclass_num=0
-        
-        true_positive=0
-        false_positive=0
-        true_negative=0
-        false_negative=0
-        
-        for context, context_sent in contextDict.items():
-            context_data=featureFactory.dataProcessor.aggregate_context_data(featureFactory.dataProcessor.graphData_goldstandards,context,context_sent)
-            
-            entity_dbpedia_URI = context_data.entity.taIdentRef
-            entityClasses = context_data.entity.isInstOfEntityClasses
-            
-            labelled_class_type = [entityClass.subClassOf for entityClass in entityClasses]
-            print('labelled class type:',labelled_class_type)
-            
-            entity_class_labels=set([entityClass.anchorOf for entityClass in entityClasses])
-            entity_rdftypes = featureFactory.dbpedia_query_rdftypes(entity_dbpedia_URI)
-            #if there is dul/d0 class
-            #http://www.ontologydesignpatterns.org/ont/d0.owl#Location
-            entity_rdf_type_labels=set([extract_type_label(featureFactory.get_URI_fragmentIdentifier(rdftype_uri)) for rdftype_uri in entity_rdftypes])
-            
-            dulClass=[rdftype for rdftype in entity_rdftypes if self.is_d0_class(rdftype)]
-            
-            entityset.add(context_data.entity.taIdentRef)
-            testset=set()
-            if len(dulClass) > 0 and dulClass[0] in featureFactory.dul_ontology_classes.keys():
-                dulclassset.add(dulClass[0])
-                testset.add(dulClass[0])
-            else:
-                #'<',entity_dbpedia_URI, 
-                without_duclass_num+=1
-                print(str(without_duclass_num)+'> do not have dul class')
-                
-                #
-                entity_synset=set()
-                entity_synset.update(entity_rdf_type_labels)
-                entity_synset.update(entity_class_labels)
-                
-                aligned_type = self.schema_alignment_by_wordnet(entity_synset,featureFactory.dul_ontology_classes)
-                print("string similarity aligned type for [",entity_class_labels,'] is [',aligned_type,']')
-                dulclassset.add(aligned_type)
-                testset.add(aligned_type)            
-                
-            print("labelled class type:",labelled_class_type)
-            print("predicted class type:",testset)
-            if (len(testset) > 0 and len(labelled_class_type) == 0):
-                false_positive+=1
-            elif (list(testset)[0] == list(labelled_class_type)[0]):
-                true_positive+=1
-            else:
-                false_positive+=1
-        
-        print('precision:', true_positive/(true_positive+false_positive))
-        print('entityset size:', len(entityset))
-        print('existing dul class size:', len(dulclassset))            
-        
-    def schema_alignment_by_headword_string_sim(self, entity_synset, dul_ontology_classes):
-        '''
-        The intuition is that head-word carry important information about concept.
-        Dbpedia classification can enrich more meaningful type sometimes with the same words with the Ontology that needs to be aligned.
-        With the set of enriched "keywords" about entity and local schema types, we can iteratively compare the maximum similarity.
-        By applying a threshold, we can choose a ontology class with maximum likelihood.
-        
-        params:
-        entity_sim - set() contains representative labels about entity and types mentioned in context
-        dul_ontology_classes - dict() contains dul classes and representative labels
-        '''
-        from oke.oak.util import levenshtein_similarity
-        most_similiar_dul_class=dict()
-        for entity_label in entity_synset:
-            entity_label_headword=entity_label.split(' ')[-1:][0]
-            
-            for classUri,classLabels in dul_ontology_classes.items():
-                max_sim = max([levenshtein_similarity(entity_label_headword,class_label) for class_label in classLabels])
-                
-                if most_similiar_dul_class.get(classUri) is None or most_similiar_dul_class.get(classUri) < max_sim:                    
-                    most_similiar_dul_class[classUri]=max_sim
-                    
-        import operator
-        print(most_similiar_dul_class)
-        suggested_class= max(most_similiar_dul_class, key=most_similiar_dul_class.get)
-        print("suggested_class:",suggested_class)
-        suggested_class_prob = most_similiar_dul_class.get(suggested_class)
-        
-        return suggested_class if suggested_class_prob> 0.9 else None
-        
-        
-    def schema_alignment_by_wordnet(self, entity_synset, dul_ontology_classes):
-        '''
-        wordnet is-a taxonomy path similarity for alignment
-        
-        The intuition is that head-word carry important information about concept.
-        Dbpedia classification can enrich more meaningful type sometimes with the same words with the Ontology that needs to be aligned.
-        With the set of enriched "keywords" about entity and local schema types, we can iteratively compare the maximum similarity.
-        By applying a threshold, we can choose a ontology class with maximum likelihood.
-        
-        params:
-        entity_sim - set() contains representative labels about entity and types mentioned in context
-        dul_ontology_classes - dict() contains dul classes and representative labels
-        '''
-        from oke.oak.util import wordnet_shortest_path
-        most_similiar_dul_class=dict()
-        for entity_label in entity_synset:
-            entity_label_headword=entity_label.split(' ')[-1:][0]            
-            for classUri,classLabels in dul_ontology_classes.items():
-                max_sim = max([wordnet_shortest_path(entity_label_headword,class_label) for class_label in classLabels])
-                
-                if most_similiar_dul_class.get(classUri) is None or most_similiar_dul_class.get(classUri) < max_sim:                    
-                    most_similiar_dul_class[classUri]=max_sim
-                    
-        import operator
-        #choose a most similar one
-        suggested_class= max(most_similiar_dul_class, key=most_similiar_dul_class.get)
-        suggested_class_prob = most_similiar_dul_class.get(suggested_class)
-        
-        return suggested_class if suggested_class_prob> 0.0 else None        
-            
-    def is_d0_class(self,class_uri):
-        from urllib.parse import urlparse
-        parsedURI = urlparse(class_uri)
-        netloc=parsedURI.netloc
-        if 'www.ontologydesignpatterns.org' == netloc:
-            return True
-        return False
            
     def train(self, train_set):
         split_size_train=0.7
         print(' split ',split_size_train*100,'% from gold standards for training ... ')
         
         from nltk.classify.maxent import MaxentClassifier       
+        from nltk.classify.naivebayes import NaiveBayesClassifier        
         
+        # 10 fold test
+        fold_n=2
+        all_f_measure=[]
+        all_precision=[]
+        all_recall=[]
         import random
-        random.shuffle(train_set)
+        for i in range(1,fold_n):
+            print("start [%s] fold validation..." %i)
+            random.shuffle(train_set)
         
-        _train_set, _test_set=train_set[:round(len(train_set)*split_size_train)],train_set[round(len(train_set)*split_size_train):]
-        me_classifier = MaxentClassifier.train(_train_set)
+            _train_set, _test_set=train_set[:round(len(train_set)*split_size_train)],train_set[round(len(train_set)*split_size_train):]
+        
+            me_classifier = MaxentClassifier.train(_train_set)
+            #nb_classifier = NaiveBayesClassifier.train(_train_set)
 
-        self.benchmarking(me_classifier,_test_set)
-         
-        self.save_classifier_model(me_classifier,'class_inducer.m')
+            #from sklearn.svm import LinearSVC
+            #from nltk.classify.scikitlearn import SklearnClassifier
+            #print("training SVM Classifier...")
+            #svm_classifier = SklearnClassifier(LinearSVC())
+            #svm_classifier = svm_classifier.train(_train_set)
+            #print("complete SVM training.")
+        
+            self.benchmarking(me_classifier,_test_set,all_f_measure, all_precision, all_recall)
+        print("all_f_measure,",all_f_measure)
+        print("all_precision,",all_precision)
+        print("all_recall", all_recall)
+        
+        print("Final F-measure", sum(all_f_measure) / float(len(all_f_measure))) 
+        print("Final precision", sum(all_precision) / float(len(all_precision))) 
+        print("Final recall", sum(all_recall) / float(len(all_recall))) 
+        
+        self.save_classifier_model(me_classifier,'me_class_inducer.m')
+        return me_classifier
 
-    def benchmarking(self, classifier,_test_set):
+    def benchmarking(self, classifier,_test_set,all_f_measure=[],all_precision=[],all_recall=[]):
         from nltk import classify
         accuracy = classify.accuracy(classifier, _test_set)
         
@@ -225,10 +206,16 @@ class ConceptRecogniser(object):
             observed = classifier.classify(feats)
             testsets[observed].add(i)
             
-        print('precision:', precision(refsets['class'], testsets['class']))
-        print('recall:', recall(refsets['class'], testsets['class']))
-        print('F-measure:', f_measure(refsets['class'], testsets['class']))        
-        
+        prec=precision(refsets['class'], testsets['class'])
+        rec=recall(refsets['class'], testsets['class'])
+        f1=f_measure(refsets['class'], testsets['class'])
+        print('precision:', prec)
+        print('recall:', rec)
+        print('F-measure:', f1)
+                
+        all_f_measure.append(f1)
+        all_precision.append(prec)
+        all_recall.append(rec)
         print('========Show top 10 most informative features========')
         classifier.show_most_informative_features(10)
         
@@ -315,12 +302,24 @@ class ConceptRecogniser(object):
             
         return content
 
+    def test_type_extraction_and_interlink(self):
+        test_file_path="../test/task2_test.ttl"
+        with open(test_file_path,'r',encoding="utf-8") as f:
+            content=f.read()     
+        
+        returnedN3Graph = self.type_extraction_and_interlink(content)
+        with open("../test/task2_test_output.ttl", mode='wb') as f:
+            f.write(returnedN3Graph)
+        print("returnedN3Graph:")
+        print(returnedN3Graph)
 if __name__ == '__main__':
     print("test Maximum Entropy classifer for class induction")
     #from oke.oak.okeConceptRecogniser import ConceptRecogniser
     conceptRecogniser=ConceptRecogniser()
-    conceptRecogniser.MEclassifier_class_extraction(compute_feature=False)
+    #conceptRecogniser.MEclassifier_model(compute_feature=False)
     #conceptRecogniser.ontology_alignment()
+    
+    conceptRecogniser.test_type_extraction_and_interlink()
     '''
     from oke.oak.FeatureFactory import FeatureFactory
     featureFactory=FeatureFactory()

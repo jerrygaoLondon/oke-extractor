@@ -38,5 +38,6 @@ class EntityClass():
         self.referenceContext=""
         self.beginIndex=""
         self.endIndex=""
+        self.taIdentRef=""
         #e.g., subClassOf: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person
         self.subClassOf=""      

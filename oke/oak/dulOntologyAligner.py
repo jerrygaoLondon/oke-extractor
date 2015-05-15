@@ -1,0 +1,724 @@
+'''
+Created on 8 May 2015
+
+@author: jieg
+'''
+import sys
+sys.path.append("../../")
+
+class DulOntologyAligner(object):
+    '''
+    DOLCE+DnS Ultra Lite (DUL) Ontology Alignment
+    '''
+    dataProcessor=None
+    
+        #http://stlab.istc.cnr.it/stlab/WikipediaOntology/
+    #dul class with representative words for similarity comparison
+    dul_ontology_classes={'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Abstract':['Abstract'], 
+                          'http://www.ontologydesignpatterns.org/ont/wikipedia/d0:Activity':['Action','activity','task'],
+                          'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Amount':['Amount','quantity'], 
+                          'http://www.ontologydesignpatterns.org/ont/wikipedia/d0:Characteristic':['Characteristic', 'Quality','feature','attribute'],
+                          'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection':['Collection','group'],
+                          'http://www.ontologydesignpatterns.org/ont/wikipedia/d0.owl#CognitiveEntity':['Cognitive Entity', 'Attitudes','cognitive','ideologies','mind'],
+                          'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description':['Conceptualization','description','context'],
+                          'http://www.ontologydesignpatterns.org/ont/wikipedia/d0.owl#Event':['event'],
+                          'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Goal':['Goal','aim','achievement'],
+                          'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity':['Information Entity', 'knowledge','creative'],                               
+                          'http://www.ontologydesignpatterns.org/ont/d0.owl#Location':['Location', 'Place','space'],
+                          'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization':['Organization', 'organisation',"company"],
+                          'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism':['Organism','animal','plant'],
+                          'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person':['Person'],
+                          'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Personification':['Personification','Fictional','imaginary'],
+                          'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject':['Physical Object','artifacts'],
+                          'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Process':['process'],
+                          'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Relation':['relation'],
+                          'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Role':['role','position'],
+                          'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation':['situation','condition','circumstance','state'],
+                          'http://www.ontologydesignpatterns.org/ont/wikipedia/d0.owl#System':['System'],
+                          'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval':['Time Interval','time','interval'],
+                          'http://www.ontologydesignpatterns.org/ont/wikipedia/d0.owl#Topic':['discipline','topic'],
+                          'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent':['Agent'],
+                          'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson':['Natural Person'],
+                          'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson':['Social Person']
+                          }
+
+    def __init__(self):
+        from oke.oak.nif2rdfProcessor import NIF2RDFProcessor
+        self.dataProcessor = NIF2RDFProcessor()
+    
+    def is_dul_class(self,class_uri):
+        from urllib.parse import urlparse
+        parsedURI = urlparse(class_uri)
+        netloc=parsedURI.netloc
+        if 'www.ontologydesignpatterns.org' == netloc:
+            return True
+        return False
+    
+    def type_alignment_by_dereferencing_types(self, entity_class_expressions=[]):
+        '''
+        Given a list of entity class raw expression from context
+        return set: a set of alignment suggestions from DBpedia
+        '''
+        entity_class_alignment_suggestions=set()
+        for entity_class_expression in entity_class_expressions:
+            entity_class_dereferencing_uri=self.generate_dbpedia_URI(entity_class_expression)
+            suggestions=self.type_alignment_by_dereferencing_type(entity_class_dereferencing_uri)
+            entity_class_alignment_suggestions.update(suggestions)
+        return entity_class_alignment_suggestions
+    
+    def type_alignment_by_dereferencing_type(self, entity_class_dereferencing_uri=""):
+        '''
+        Linked Data Discovery for alignment by dereferencing type URI
+        
+        params: a list of raw entity class expression in context
+        
+        Query DUL classes by autogenerated deferencing URIs of entity class expressions
+        
+        return a list of dbpedia type URI
+        
+        For example:
+                  select distinct ?type where { {?instance dbpedia-owl:type <http://dbpedia.org/resource/Holding_company> .
+                      ?instance a ?type .            
+                  }
+                  UNION
+                  {
+                    <http://dbpedia.org/resource/Holding_company> dbpedia-owl:wikiPageRedirects ?entity .
+                    ?instance dbpedia-owl:type ?entity .
+                    ?instance a ?type .
+                  }
+                  UNION
+                  {
+                    <http://dbpedia.org/resource/Holding_company> a ?type .
+                  }
+                  FILTER(?type != owl:Thing)
+            }
+        Example output:{'http://dbpedia.org/class/yago/Organization108008335',
+                        'http://dbpedia.org/class/yago/Company108058098', 
+                        'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson',
+                        'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 
+                        'http://dbpedia.org/ontology/Company', ...}
+        '''
+        from oke.oak.DBpediaQuerier import DBpediaQuerier
+        dbpediaQuerier=DBpediaQuerier()
+        
+        query="select distinct ?type where { "
+        query+=" {?instance dbpedia-owl:type <%s> ." %entity_class_dereferencing_uri
+        query+="  ?instance a ?type ."
+        query+=" } "
+        query+=" UNION "
+        query+=" { <%s> dbpedia-owl:wikiPageRedirects ?entity .?instance dbpedia-owl:type ?entity ." %entity_class_dereferencing_uri
+        query+="   ?instance dbpedia-owl:type ?entity ."
+        query+="   ?instance a ?type . }"
+        query+=" UNION "
+        query+=" { <%s> a ?type. }" %entity_class_dereferencing_uri
+        query+=" FILTER(?type != owl:Thing) "
+        query+=" } "
+        results = dbpediaQuerier.dbpedia_query(query)
+        
+        alignment_suggestions=set()
+        
+        for results in results["results"]["bindings"]:
+            alignment_suggestions.add(results['type']['value'])
+        return alignment_suggestions
+    
+    def evaluate_linked_data_discovery_alignment(self):
+        '''
+        Evaluate linked data discovery results for DUL ontology alignment
+        measure how many entity classes have already been labelled with DUL classes in GoldStandards
+        '''                
+        contextDict = self.dataProcessor.get_task_context(self.dataProcessor.graphData_goldstandards)
+        
+        dulTypedNum=0
+        dulTypedNum_countAsHeadWord=0
+        totalClasses=0
+        for context, context_sent in contextDict.items():
+            context_data=self.dataProcessor.aggregate_context_data(self.dataProcessor.graphData_goldstandards,context,context_sent)
+            
+            #entity_dbpedia_URI = context_data.entity.taIdentRef
+            entityClasses = context_data.entity.isInstOfEntityClasses
+            
+            class_expressions=[entityClass.anchorOf for entityClass in entityClasses]
+            totalClasses+=len(class_expressions)
+            print("extracted class expression:",class_expressions)
+            labelled_classes_dbpedia_uri=[self.generate_dbpedia_URI(class_expression) for class_expression in class_expressions]
+            for class_uri in labelled_classes_dbpedia_uri:
+                for dul_class_uri in self.dul_ontology_classes.keys():
+                    isDulTyped=self.ask_type_relation(class_uri,dul_class_uri)
+                    if isDulTyped:
+                        dulTypedNum+=1
+                        dulTypedNum_countAsHeadWord+=len(class_expressions)
+        print("total num of DUL typed classes in DBpedia:",dulTypedNum)
+        print("Total num of DUL typed classes in DBpedia combining all multi-word term with the headword:"+str(dulTypedNum_countAsHeadWord))
+        print("total class expressions in goldstandards:",totalClasses)
+        return dulTypedNum
+
+    def ask_type_relation(self, target_class, reference_class):
+        '''
+         ASK whether an instance of target class in DBpedia is also an instance of reference class
+        return True or False
+        Param: 
+           - target_class is entity type/class expression which must be DBpedia dereferenceable URI
+           - reference_class is DUL class here which must also be a URI
+        For example,
+        ASK { {?instance dbpedia-owl:type <http://dbpedia.org/resource/Company> .
+            ?instance a ?type .
+            FILTER(?type = <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson>)
+              }
+              UNION
+              {
+                <http://dbpedia.org/resource/Company> dbpedia-owl:wikiPageRedirects ?entity .
+                ?instance dbpedia-owl:type ?entity .
+                ?instance a ?type .
+                FILTER(?type = <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson>)
+              }
+              UNION
+              {
+                <http://dbpedia.org/resource/Company> a <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson> .
+              }
+        }
+        '''
+        query="ASK { {?instance dbpedia-owl:type <%s> ." %target_class
+        query+=" ?instance a ?type . "
+        query+=" FILTER(?type = <%s>) " %reference_class
+        query+=" } UNION {"
+        query+=" <%s> dbpedia-owl:wikiPageRedirects ?entity . "
+        query+=" ?instance dbpedia-owl:type ?entity . "
+        query+=" ?instance a ?type ."
+        query+=" FILTER(?type = <%s>)" %reference_class
+        query+=" } UNION {"
+        query+=" <%s>" % target_class + " a <%s>" % reference_class
+        query+=" }"
+        query+= "}"
+        results = self.dbpedia_query(query)
+        print("results->",results)
+        
+        return results['boolean']
+
+    def generate_dbpedia_URI(self, class_label):
+        capitaliseLabel="_".join([w.capitalize() for w in class_label.strip().split(' ')])
+        dbpedia_dereferenceable_uri="http://dbpedia.org/resource/"+capitaliseLabel
+        return dbpedia_dereferenceable_uri
+
+    def schema_alignment_by_headword_string_sim(self, entity_synset, dul_ontology_classes):
+        '''
+        The intuition is that head-word carry important information about concept.
+        Dbpedia classification can enrich more meaningful type sometimes with the same words with the Ontology that needs to be aligned.
+        With the set of enriched "keywords" about entity and local schema types, we can iteratively compare the maximum similarity.
+        By applying a threshold, we can choose a ontology class with maximum likelihood.
+        
+        params:
+        entity_sim - set() contains representative labels about entity and types mentioned in context
+        dul_ontology_classes - dict() contains dul classes and representative labels
+        '''
+        from oke.oak.util import levenshtein_similarity
+        most_similiar_dul_class=dict()
+        for entity_label in entity_synset:
+            entity_label_headword=entity_label.split(' ')[-1:][0]
+            
+            for classUri,classLabels in dul_ontology_classes.items():
+                max_sim = max([levenshtein_similarity(entity_label_headword,class_label) for class_label in classLabels])
+                
+                if most_similiar_dul_class.get(classUri) is None or most_similiar_dul_class.get(classUri) < max_sim:                    
+                    most_similiar_dul_class[classUri]=max_sim
+                    
+        import operator
+        print(most_similiar_dul_class)
+        suggested_class= max(most_similiar_dul_class, key=most_similiar_dul_class.get)
+        print("suggested_class:",suggested_class)
+        suggested_class_prob = most_similiar_dul_class.get(suggested_class)
+        
+        return suggested_class if suggested_class_prob> 0.9 else None
+
+    def schema_alignment_by_wordnet(self, entity_synset, dul_ontology_classes):
+        '''
+        wordnet is-a taxonomy path similarity for alignment
+        
+        The intuition is that head-word carry important information about concept.
+        Dbpedia classification can enrich more meaningful type sometimes with the same words with the Ontology that needs to be aligned.
+        With the set of enriched "keywords" about entity and local schema types, we can iteratively compare the maximum similarity.
+        By applying a threshold, we can choose a ontology class with maximum likelihood.
+        
+        params:
+        entity_sim - set() contains representative labels about entity and types mentioned in context
+        dul_ontology_classes - dict() contains dul classes and representative labels
+        '''
+        from oke.oak.util import wordnet_shortest_path
+        most_similiar_dul_class=dict()
+        for entity_label in entity_synset:
+            entity_label_headword=entity_label.split(' ')[-1:][0]            
+            for classUri,classLabels in dul_ontology_classes.items():
+                max_sim = max([wordnet_shortest_path(entity_label_headword,class_label) for class_label in classLabels])
+                
+                if most_similiar_dul_class.get(classUri) is None or most_similiar_dul_class.get(classUri) < max_sim:                    
+                    most_similiar_dul_class[classUri]=max_sim
+                    
+        #choose a most similar one
+        suggested_class= max(most_similiar_dul_class, key=most_similiar_dul_class.get)
+        suggested_class_prob = most_similiar_dul_class.get(suggested_class)
+        
+        return suggested_class if suggested_class_prob> 0.0 else None        
+
+    def batch_ontology_alignment(self):
+        '''
+        ontology alignment for DOLCE+DnS Ultra Lite classes
+            : query for dbpedia rdf types -> wordnet path similarity (is-a taxonomy) matching
+        '''
+        from oke.oak.FeatureFactory import FeatureFactory
+        from oke.oak.util import extract_type_label
+        import collections
+        
+        featureFactory = FeatureFactory()
+        
+        refsets = collections.defaultdict(set)
+        testsets = collections.defaultdict(set)
+        
+        contextDict = self.dataProcessor.get_task_context(self.dataProcessor.graphData_goldstandards)
+        entityset=set()
+        dulclassset=set()
+        without_duclass_num=0
+        
+        true_positive=0
+        false_positive=0
+        true_negative=0
+        false_negative=0
+        
+        for context, context_sent in contextDict.items():
+            context_data=featureFactory.dataProcessor.aggregate_context_data(featureFactory.dataProcessor.graphData_goldstandards,context,context_sent)
+            
+            entity_dbpedia_URI = context_data.entity.taIdentRef
+            entityClasses = context_data.entity.isInstOfEntityClasses
+            
+            labelled_class_type = [entityClass.subClassOf for entityClass in entityClasses]
+            print('labelled class type:',labelled_class_type)
+            
+            entity_class_labels=set([entityClass.anchorOf for entityClass in entityClasses])
+            
+            entity_rdftypes = featureFactory.dbpedia_query_rdftypes(entity_dbpedia_URI)
+            
+            class_inst_rdftypes=featureFactory.dbpedia_query_deferencing_type(entity_class_labels)
+            
+            '''step 1: Linked Open Data Discovering: check if there is dul/d0 class already associated with entity and type (by dereferenceable URI)
+            '''
+            #http://www.ontologydesignpatterns.org/ont/d0.owl#Location
+            entity_rdf_type_labels=set([extract_type_label(featureFactory.get_URI_fragmentIdentifier(rdftype_uri)) for rdftype_uri in entity_rdftypes])
+            #TODO: entity_class_rdf_type_labels
+            
+            # step 1: check whether there exist dul class already classified in DBpedia
+            dulClass=[rdftype for rdftype in entity_rdftypes if self.is_dul_class(rdftype)]
+            
+            entityset.add(context_data.entity.taIdentRef)
+            testset=set()
+            if len(dulClass) > 0 and dulClass[0] in featureFactory.dul_ontology_classes.keys():
+                dulclassset.add(dulClass[0])
+                testset.add(dulClass[0])
+            else:
+                #'<',entity_dbpedia_URI, 
+                without_duclass_num+=1
+                print(str(without_duclass_num)+'> do not have dul class pre-classified in DBpedia')
+                
+                entity_synset=set()
+                entity_synset.update(entity_rdf_type_labels)
+                entity_synset.update(entity_class_labels)
+                
+                aligned_type = self.schema_alignment_by_wordnet(entity_synset,featureFactory.dul_ontology_classes)
+                print("string similarity aligned type for [",entity_class_labels,'] is [',aligned_type,']')
+                dulclassset.add(aligned_type)
+                testset.add(aligned_type)            
+                
+            print("labelled class type:",labelled_class_type)
+            print("predicted class type:",testset)
+            if (len(testset) > 0 and len(labelled_class_type) == 0):
+                false_positive+=1
+            elif (list(testset)[0] == list(labelled_class_type)[0]):
+                true_positive+=1
+            else:
+                false_positive+=1
+        
+        print('precision:', true_positive/(true_positive+false_positive))
+        print('entityset size:', len(entityset))
+        print('existing dul class size:', len(dulclassset))                                
+
+    def ontology_alignment(self, context_data):
+        '''
+        ontology alignment for each context data
+        step 1: linked data discovery
+        step 2: terminological similarity alignment
+        step 3: semantic similarity alignment
+        
+        return set, suggested aligned classes
+        '''
+        from oke.oak.util import extract_type_label
+        from oke.oak.util import get_URI_fragmentIdentifier
+        
+        entity_dbpedia_URI = context_data.entity.taIdentRef
+        entityClasses = context_data.entity.isInstOfEntityClasses
+        
+        entityClasses_labels=set([entityClass.anchorOf for entityClass in entityClasses])
+        #step 1: linked data discovery for alignment suggestions
+        linked_data_suggested_alignments, all_rdf_types =self.linked_data_discovery_for_alignment(entity_dbpedia_URI,entityClasses_labels)
+        '''
+        if (len(linked_data_suggested_alignments) > 0):
+            return linked_data_suggested_alignments
+        '''
+        all_rdf_types_labels=set([extract_type_label(get_URI_fragmentIdentifier(rdftype_uri)) for rdftype_uri in all_rdf_types])
+        
+        #step 2: terminological similarity computation for alignment suggestions
+        term_similarity_suggested_alignments= self.terminology_similarity_for_alignment(entityClasses_labels, all_rdf_types_labels)
+        if len(term_similarity_suggested_alignments) > 0:
+            return term_similarity_suggested_alignments
+        
+        #step 3: semantic similarity computation for alignment suggestion
+        #semantic_similarity_suggestions=set()
+        
+        semantic_similarity_suggested_DUL_class = self.semantic_similarity_for_alignment(entityClasses_labels,all_rdf_types_labels)
+        
+        #semantic_similarity_suggestions.add(semantic_similarity_suggested_DUL_class)
+        semantic_similarity_suggestions={semantic_similarity_suggested_DUL_class}
+        print("return suggested DUL alignment from semantic computation:",semantic_similarity_suggestions)
+        
+        return semantic_similarity_suggestions
+        '''
+        return set()
+        '''
+    def wikipedia_d0_ontology_mapping(self, suggested_classes):
+        '''
+        simply namespace mapping between wikipedia/d0.owl# and ont/d0.owl#
+        param:
+        suggested_classes
+        '''
+        mapped_classes=[suggested_class.replace("http://www.ontologydesignpatterns.org/ont/d0.owl#", "http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#") for suggested_class in suggested_classes if "http://www.ontologydesignpatterns.org/ont/d0.owl#" in suggested_class]
+        suggested_classes.update(set(mapped_classes))
+        return suggested_classes
+    
+    def d0_ontology_wikipedia_mapping(self, labelled_classes):
+        mapped_classes=[labelled_class.replace("http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#", "http://www.ontologydesignpatterns.org/ont/d0.owl#") for labelled_class in labelled_classes if "http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#" in labelled_class]
+        
+        mapped_classes_set=set()
+        mapped_classes_set.update(mapped_classes)
+        mapped_classes_set.update(labelled_classes)
+        
+        return mapped_classes_set
+    
+    def linked_data_discovery_for_alignment(self, entity_dbpedia_URI, entityClasses_labels):    
+        '''
+        discovery DUL classes alignment suggestions by entity and entity class dereferencing URIs from DBpedia
+        param:
+        entity_dbpedia_URI : string, DBpedia URI string
+        entity class labels: list, list of strings
+        
+        return a tuple containing suggested dul classes for alignment and all_possible_rdf_types
+        '''
+        from oke.oak.DBpediaQuerier import DBpediaQuerier
+        import urllib
+        
+        dbpediaQuerier = DBpediaQuerier()
+        try:
+            entity_rdf_types = dbpediaQuerier.dbpedia_query_rdftypes(entity_dbpedia_URI)
+        except urllib.error.URLError:
+            print("===urllib.error.URLError")
+        class_inst_rdftypes = self.type_alignment_by_dereferencing_types(entityClasses_labels)
+        
+        all_possible_rdf_types=set()
+        all_possible_rdf_types.update(entity_rdf_types)
+        all_possible_rdf_types.update(class_inst_rdftypes)
+        
+        dulClasses=[rdftype for rdftype in all_possible_rdf_types if self.is_dul_class(rdftype)]
+        
+        #ontology mapping
+        #dulClasses = self.wikipedia_d0_ontology_mapping(dulClasses)
+        return (dulClasses,all_possible_rdf_types)
+
+    def terminology_similarity_for_alignment(self, entityClasses_labels, all_rdf_types_labels):
+        '''
+        schema-level (for both type label(i.e., local schema) and rdf types (linked data schema)) similarity comparison against DUL ontology classes
+        schema labels can be expanded with synonyms,hypernyms
+        params:
+        entityClasses_labels : set
+        all_rdf_types_labels : set
+        return set, a set of suggested DUL classes URIs
+        '''
+        most_similiar_dul_classes=set()
+        most_similiar_dul_classes.update(self.string_similarity_comparision_with_dulOntologies(entityClasses_labels))
+        most_similiar_dul_classes.update(self.string_similarity_comparision_with_dulOntologies(all_rdf_types_labels))
+
+        return most_similiar_dul_classes
+    
+    def string_similarity_comparision_with_dulOntologies(self, class_labels):
+        from oke.oak.util import levenshtein_similarity
+        similarity_threshold=0.9
+        
+        most_similiar_dul_classes=set()
+        for _classlabel in class_labels:
+            for classUri,classLabels in self.dul_ontology_classes.items():
+                suggested_classes = [class_label for class_label in classLabels if levenshtein_similarity(_classlabel.lower(),class_label.lower())>similarity_threshold]
+                
+                if len(suggested_classes) > 0:
+                    most_similiar_dul_classes.add(classUri)
+        return most_similiar_dul_classes
+ 
+    def semantic_similarity_for_alignment(self, entity_class_labels, related_lod_rdf_type_labels):
+        '''
+        if alignment decision cannot be made, 
+        entity class labels and discovered DBpedia RDF type lables will be combined compute Wordnet path similarity (is-a) with DUL ontology class & expanded keywords and synonyms
+        
+        Maybe Avoid to compare multi-word terms as too much noisy in LOD types
+        Use head noun for multi-word terms to maximise the possibilities
+        
+        Choose the DUL class with maximum probability
+        
+        params:
+        entityClasses_labels : set
+        all_rdf_types_labels : set
+        return string, suggested DUL classes URI
+        return "" if no DUL classes matched
+        '''
+        from oke.oak.util import wordnet_shortest_path
+        most_similiar_dul_class=dict()
+        for entity_class_label in entity_class_labels:
+            #use head noun
+            entity_class_label_headnoun=entity_class_label.split(' ')[-1:][0]
+            splitted_labels=entity_class_label.split(' ')
+            if(len(splitted_labels) > 1):
+                continue
+            
+            for classUri,classLabels in self.dul_ontology_classes.items():
+                #compare similarity path distance between head noun of class label with keywords of the ontology class
+                #only preserve the maximum value of matched pairs
+                #print("compare ",entity_class_label,"with ["+",".join(classLabels)+"]")
+                max_sim = max([wordnet_shortest_path(entity_class_label,class_label) for class_label in classLabels])
+                if most_similiar_dul_class.get(classUri) is None or most_similiar_dul_class.get(classUri) < max_sim:
+                    most_similiar_dul_class[classUri]=max_sim
+                    
+        #choose a most similar DUL class matched
+        if len(most_similiar_dul_class) > 1:
+            suggested_alignment_class= max(most_similiar_dul_class, key=most_similiar_dul_class.get)
+            suggested_class_prob = most_similiar_dul_class.get(suggested_alignment_class)
+            similarity_threshold=0.1
+            
+            print("suggested_alignment_class from semantic computation:",suggested_alignment_class, " , probability:",suggested_class_prob)
+            return suggested_alignment_class if suggested_class_prob> similarity_threshold else ""
+        return ""
+                    
+    def ontology_alignment_evaluation(self):
+        '''
+        Evaluate the performance of ontology alignment
+        
+        Evaluate based on each entity. 
+        Even if more than one alignment suggestions can be returned, correct identified num will be counted if there is one matched
+        to determine whether the one is matched or not, we combine full string match and subsumption check.
+        If suggested class is subclass of labelled class or vise versa, we count the result is correctly identified suggestions.
+        '''
+        contextDict = self.dataProcessor.get_task_context(self.dataProcessor.graphData_goldstandards)
+        
+        correctIdentifiedClasses=0
+        identifiedClasses=0
+        goldstandardClasses=0
+        false_positive=0
+        
+        from oke.oak.nif2rdfProcessor import NIF2RDFProcessor
+        nif2rdfProcessor=NIF2RDFProcessor()
+        for context, context_sent in contextDict.items():
+            context_data=self.dataProcessor.aggregate_context_data(self.dataProcessor.graphData_goldstandards,context,context_sent)
+            entityClasses = context_data.entity.isInstOfEntityClasses
+            
+            labelled_aligned_dulClasses = [entityClass.subClassOf for entityClass in entityClasses]
+            labelled_aligned_dulClasses=self.d0_ontology_wikipedia_mapping(labelled_aligned_dulClasses)
+            print("labelled aligned dul classes:", labelled_aligned_dulClasses)
+            
+            suggested_dul_alignments=self.ontology_alignment(context_data)
+            
+            print("suggested_dul_alignments returned from ontology_alignment:")
+            print(suggested_dul_alignments)
+            '''
+            if len(labelled_aligned_dulClasses) == 0 and len(suggested_dul_alignments) == 0:
+                correctIdentifiedClasses+=1
+            '''
+            if len(labelled_aligned_dulClasses) > 0:
+                goldstandardClasses +=1
+            if len(suggested_dul_alignments) >0:
+                identifiedClasses+=1
+            
+            if len(labelled_aligned_dulClasses) == 0 and len(suggested_dul_alignments) > 0:
+                false_positive+=1
+            '''
+            if len(labelled_aligned_dulClasses) > 0 and len(suggested_dul_alignments) == 0:
+                false_negative+=1
+            '''
+                
+            #should do subsumption test to check whether suggested alignment is subclass of labelled classes
+            #corrected_alignments=[suggestion for suggestion in suggested_dul_alignments if suggestion in labelled_aligned_dulClasses]
+            #corrected_alignments=suggested_dul_alignments
+            corrected_alignments=[suggestion for suggestion in suggested_dul_alignments if suggestion in labelled_aligned_dulClasses]
+            
+            if (len(corrected_alignments)<0):
+                for suggestion in suggested_dul_alignments:
+                    for labelled_alignment in labelled_aligned_dulClasses:
+                        print("check suggested [",suggestion,"] is subclass of [",labelled_alignment,"] or vise versa")
+                        isSubClass=nif2rdfProcessor.is_subClassOf_dul_d0_class(suggestion, labelled_alignment)
+                        
+                        if isSubClass is False:
+                            isSubClass=nif2rdfProcessor.is_subClassOf_dul_d0_class(labelled_alignment, suggestion)
+                        print("answer is [",isSubClass,"]")
+                        
+                        if isSubClass:
+                            corrected_alignments.append(suggestion)
+                            
+            print("final correctly identified alignment:",corrected_alignments)    
+            #is_subClassOf_dul_d0_class
+            if (len(corrected_alignments)>0):
+                correctIdentifiedClasses+=1
+                print("correctly identified alignments:",correctIdentifiedClasses)
+            else:
+                false_positive+=1
+        
+        print("correctIdentifiedClasses:",correctIdentifiedClasses)
+        print("identifiedClasses:",identifiedClasses)
+        print("goldstandardClasses:",goldstandardClasses)        
+                
+        precision=correctIdentifiedClasses/float(identifiedClasses)
+        recall=correctIdentifiedClasses/float(goldstandardClasses)
+        
+        f1=(2*precision*recall)/float(precision+recall)
+        
+        print("precision:", precision)
+        print("recall:",recall)
+        print("f1-measure:",f1)
+    '''
+    ========================================Simple test/evaluation methods below ===========================================================
+    '''
+
+    def test_type_alignment_by_dereferencing_type(self):
+        alignmentSuggestions = self.type_alignment_by_dereferencing_type("http://dbpedia.org/resource/Holding_company")
+        print("suggested alignment for 'Holding Company' from DBpedia: ", alignmentSuggestions)
+        alignmentSuggestions = self.type_alignment_by_dereferencing_type("http://dbpedia.org/resource/Left_fielder")
+        print("suggested alignment for 'Left fielder' from DBpedia: ", alignmentSuggestions)
+        
+    
+    def test_type_alignment_by_dereferencing_types(self):
+        entity_class_expressions=["hill island","island"]
+        alignmentSuggestions=self.type_alignment_by_dereferencing_types(entity_class_expressions)
+        print("alignment suggestions for entity_class expression [%s]: " % ",".join(entity_class_expressions), ""+",".join(alignmentSuggestions))
+        
+        entity_class_expressions=["German Automobile Manufacturer", "Automobile Manufacturer", "Manufacturer"]
+        alignmentSuggestions=self.type_alignment_by_dereferencing_types(entity_class_expressions)        
+        print("alignment suggestions for entity_class expression [%s]: " % ",".join(entity_class_expressions), ""+",".join(alignmentSuggestions))
+    
+    def test_generate_dbpedia_URI(self):
+        print("dbpedia uri for 'holding company' is : ", self.generate_dbpedia_URI("holding company"))
+        print("dbpedia uri for 'former Major League Baseball left fielder' is : ", self.generate_dbpedia_URI("former Major League Baseball left fielder"))
+
+    def test_linked_data_discovery_for_alignment(self):
+        entity_dbpedia_URI="http://dbpedia.org/resource/Daimler-Motoren-Gesellschaft"
+        entityClasses_labels=["German automobile manufacturer", "Automobile Manufacturer", "Manufacturer"]
+        linked_data_suggested_dulClasses, all_rdf_types =self.linked_data_discovery_for_alignment(entity_dbpedia_URI, entityClasses_labels)
+        
+        print("suggested dul classes for 'Manufacturer':",linked_data_suggested_dulClasses)
+        
+        entity_dbpedia_URI="http://dbpedia.org/resource/5th_Royal_Irish_Lancers"
+        entityClasses_labels=["Cavalry Regiment","Regiment"]
+        linked_data_suggested_dulClasses, all_rdf_types =self.linked_data_discovery_for_alignment(entity_dbpedia_URI, entityClasses_labels)
+        print("suggested dul classes for 'Regiment':",linked_data_suggested_dulClasses)
+        
+        entity_dbpedia_URI="http://dbpedia.org/resource/Tomorrowland"
+        entityClasses_labels=["theme lands","land"]
+        linked_data_suggested_dulClasses, all_rdf_types =self.linked_data_discovery_for_alignment(entity_dbpedia_URI, entityClasses_labels)
+        print("suggested dul classes for 'land':",linked_data_suggested_dulClasses)
+        print("all rdf types of 'land':", all_rdf_types )
+        
+        entity_dbpedia_URI="http://dbpedia.org/resource/AVEX_Records"
+        entityClasses_labels=["Holding Company","Company"]
+        linked_data_suggested_dulClasses, all_rdf_types =self.linked_data_discovery_for_alignment(entity_dbpedia_URI, entityClasses_labels)
+        print("suggested dul classes for 'Company':",linked_data_suggested_dulClasses)
+        print("all rdf types of 'Company':", all_rdf_types )
+        
+    def test_terminology_similarity_for_alignment(self):
+        entityClasses_labels=["company"]
+        all_rdf_types_labels=["Manufacturer", "Companies Listed On The Singapore Exchange"]
+        most_similiar_dul_classes = self.terminology_similarity_for_alignment(entityClasses_labels, all_rdf_types_labels)
+        print("most_similiar_dul_classes for 'company': ",most_similiar_dul_classes)
+        
+        entity_dbpedia_URI="http://dbpedia.org/resource/AVEX_Records"
+        entityClasses_labels=["Holding Company","Company"]
+        linked_data_suggested_dulClasses, all_rdf_types =self.linked_data_discovery_for_alignment(entity_dbpedia_URI, entityClasses_labels)
+        from oke.oak.util import extract_type_label
+        from oke.oak.util import get_URI_fragmentIdentifier
+        
+        all_rdf_types_labels=set([extract_type_label(get_URI_fragmentIdentifier(rdftype_uri)) for rdftype_uri in all_rdf_types])
+        most_similiar_dul_classes = self.terminology_similarity_for_alignment(entityClasses_labels, all_rdf_types_labels)
+        print("most_similiar_dul_classes for 'Holding Company': ",most_similiar_dul_classes)
+        
+        entity_dbpedia_URI="http://dbpedia.org/resource/Brian_Banner"
+        entityClasses_labels=["Fictional Villain","Villain"]
+        linked_data_suggested_dulClasses, all_rdf_types =self.linked_data_discovery_for_alignment(entity_dbpedia_URI, entityClasses_labels)
+        all_rdf_types_labels=set([extract_type_label(get_URI_fragmentIdentifier(rdftype_uri)) for rdftype_uri in all_rdf_types])
+        most_similiar_dul_classes = self.terminology_similarity_for_alignment(entityClasses_labels, all_rdf_types_labels)
+        print("most_similiar_dul_classes for 'Villain': ",most_similiar_dul_classes)
+        
+        entity_dbpedia_URI="http://dbpedia.org/resource/Dalavia_Far_East_Airways"
+        entityClasses_labels=["Airline"]
+        linked_data_suggested_dulClasses, all_rdf_types =self.linked_data_discovery_for_alignment(entity_dbpedia_URI, entityClasses_labels)
+        all_rdf_types_labels=set([extract_type_label(get_URI_fragmentIdentifier(rdftype_uri)) for rdftype_uri in all_rdf_types])
+        most_similiar_dul_classes = self.terminology_similarity_for_alignment(entityClasses_labels, all_rdf_types_labels)
+        print("most_similiar_dul_classes for 'Airline': ",most_similiar_dul_classes)
+        
+    def test_semantic_similarity_for_alignment(self):
+        from oke.oak.util import extract_type_label
+        from oke.oak.util import get_URI_fragmentIdentifier
+        
+        entityClasses_labels=["company"]
+        all_rdf_types_labels=["Manufacturer", "Companies Listed On The Singapore Exchange"]
+        most_similiar_dul_classes = self.semantic_similarity_for_alignment(entityClasses_labels, all_rdf_types_labels)
+        print("most_semantic_similiar_dul_classes for 'company': ",most_similiar_dul_classes)
+        
+        entity_dbpedia_URI="http://dbpedia.org/resource/Brian_Banner"
+        entityClasses_labels=["Fictional Villain","Villain"]
+        linked_data_suggested_dulClasses, all_rdf_types =self.linked_data_discovery_for_alignment(entity_dbpedia_URI, entityClasses_labels)
+        all_rdf_types_labels=set([extract_type_label(get_URI_fragmentIdentifier(rdftype_uri)) for rdftype_uri in all_rdf_types])
+        most_similiar_dul_classes = self.semantic_similarity_for_alignment(entityClasses_labels, all_rdf_types_labels)
+        print("most_semantic_similiar_dul_classes for 'Villain': ",most_similiar_dul_classes)
+        
+        entity_dbpedia_URI="http://dbpedia.org/resource/Dalavia_Far_East_Airways"
+        entityClasses_labels=["Airline"]
+        linked_data_suggested_dulClasses, all_rdf_types =self.linked_data_discovery_for_alignment(entity_dbpedia_URI, entityClasses_labels)
+        all_rdf_types_labels=set([extract_type_label(get_URI_fragmentIdentifier(rdftype_uri)) for rdftype_uri in all_rdf_types])
+        most_similiar_dul_classes = self.semantic_similarity_for_alignment(entityClasses_labels, all_rdf_types_labels)
+        print("most_semantic_similiar_dul_classes for 'Airline': ",most_similiar_dul_classes)
+         
+        entity_dbpedia_URI="http://dbpedia.org/resource/Danderyds_sjukhus_metro_station"
+        entityClasses_labels=["Station","Metro Station"]
+        linked_data_suggested_dulClasses, all_rdf_types =self.linked_data_discovery_for_alignment(entity_dbpedia_URI, entityClasses_labels)
+        all_rdf_types_labels=set([extract_type_label(get_URI_fragmentIdentifier(rdftype_uri)) for rdftype_uri in all_rdf_types])
+        most_similiar_dul_classes = self.semantic_similarity_for_alignment(entityClasses_labels, all_rdf_types_labels)
+        print("most_semantic_similiar_dul_classes for 'Metro Station': ",most_similiar_dul_classes)
+    
+    def test_ontology_alignment(self):
+        from oke.oak.TaskContext import TaskContext
+        from oke.oak.TaskContext import ContextEntity
+        from oke.oak.TaskContext import EntityClass
+                        
+        context_data = TaskContext("http://www.ontologydesignpatterns.org/data/oke-challenge/task-2/sentence-1#char=0,150")
+        entity=ContextEntity("http://www.ontologydesignpatterns.org/data/oke-challenge/task-2/sentence-1#char=0,12")
+        entity.taIdentRef="http://dbpedia.org/resource/Brian_Banner"
+          
+        entityClass1=EntityClass("http://www.ontologydesignpatterns.org/data/oke-challenge/sentence-1#char=18,35")
+        entityClass1.anchorOf="fictional villain"
+          
+        entityClass2=EntityClass("http://www.ontologydesignpatterns.org/data/oke-challenge/sentence-1#char=28,35")
+        entityClass2.anchorOf="villain"
+          
+        entityClasses=set()
+        entityClasses.add(entityClass1)
+        entityClasses.add(entityClass2)
+        
+        entity.isInstOfEntityClasses=entityClasses
+        context_data.entity=entity
+        
+        suggested_DUL_class_for_alignment =self.ontology_alignment(context_data)
+        print("suggested alignment for \"fictional villain\":",suggested_DUL_class_for_alignment)
+    
+    def test_wikipedia_d0_mapping(self):
+        original_labelled_classes=['http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Location']
+        print(self.d0_ontology_wikipedia_mapping(original_labelled_classes))
+if __name__ == '__main__':
+    aligner = DulOntologyAligner()
+    aligner.ontology_alignment_evaluation()

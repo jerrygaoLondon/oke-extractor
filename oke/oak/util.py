@@ -30,7 +30,14 @@ def wordnet_shortest_path(word1, word2):
                 sem_similarity = _similarity
     #print('semantic similarity between [',word1,'] and [',word2,'] is [',sem_similarity,']')
     return sem_similarity
-
+def get_first_wordnet_sense(word):
+    '''get only the firstWordNet sense for WN_CLASS feature
+    heuristic identified in ([Ng 2007] Semantic Class Induction and Coreference Resolution)
+    '''
+    from nltk.corpus import wordnet as wn
+    word_synsets=wn.synsets(word)
+    return word_synsets[0]
+    
 def extract_type_label(ident_str):
     '''
     extract_type_label_for_dbpedia_uri_fragmentIdentifier
@@ -56,4 +63,32 @@ def extract_type_label(ident_str):
             _temp_token+=cur_char
     
     return ' '.join(tokens)
+
+def get_URI_fragmentIdentifier(uri_string):
+    '''
+    provide a simple function extracting label from DBPEDIA URI. An alternative (ideal) approach is to query rdf:label from repository.
+    return URI fragment identifier (e.g., 'Agent' for 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent').
+    if no fragment identifier identified, return the last words from '/' splitted tokens
+    '''
+    from urllib.parse import urlparse
+    parsedURI = urlparse(uri_string)
+    fragmentIdentifer=parsedURI.fragment
+    if fragmentIdentifer == '':
+        uri_tokens=uri_string.split('/')
+        fragmentIdentifer=uri_tokens[-1:][0]
+    return fragmentIdentifer
+   
+def contains_digits(_str):
+    import re
+    _digits = re.compile('\d')
+    return bool(_digits.search(_str))
+
+def read_by_line(_filePath):
+    """
+    load file content
+    return file content in list of lines
+    """
+    with open(_filePath,mode='r',encoding='utf8') as f:
+        content = [l for l in (line.strip() for line in f) if l]
+    return content
     
