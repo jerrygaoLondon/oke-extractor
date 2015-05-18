@@ -1,0 +1,840 @@
+training data is loaded!
+result size: 99
+total [99] result returned
+training data is loaded!
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Goal', 'http://www.ontologydesignpatterns.org/ont/wikipedia/d0.owl#Event', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity']
+correctly identified alignments: 1
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval']
+correctly identified alignments: 2
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Activity', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Activity'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection  , probability: 0.5
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 3
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization  , probability: 0.3333333333333333
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization']
+correctly identified alignments: 3
+result size: 1
+total [1] entities found
+result size: 3
+labelled aligned dul classes: {'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Activity', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Activity'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Role  , probability: 0.3333333333333333
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Role'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Role'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Location'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/d0.owl#Location  , probability: 0.25
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correctly identified alignments: 4
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization']
+correctly identified alignments: 5
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval  , probability: 0.3333333333333333
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval']
+correctly identified alignments: 6
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Goal', 'http://www.ontologydesignpatterns.org/ont/wikipedia/d0.owl#Event', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity']
+correctly identified alignments: 7
+result size: 1
+total [1] entities found
+result size: 3
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person']
+correctly identified alignments: 8
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Location'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correctly identified alignments: 9
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Location'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correctly identified alignments: 10
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval  , probability: 0.3333333333333333
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval']
+correctly identified alignments: 11
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Goal', 'http://www.ontologydesignpatterns.org/ont/wikipedia/d0.owl#Event', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity']
+correctly identified alignments: 12
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Personification'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description  , probability: 0.3333333333333333
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person']
+correctly identified alignments: 13
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval  , probability: 0.3333333333333333
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval']
+correctly identified alignments: 14
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#System'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/wikipedia/d0.owl#System', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 5
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person']
+correctly identified alignments: 15
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism  , probability: 0.14285714285714285
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism']
+correctly identified alignments: 16
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Location'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correctly identified alignments: 17
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#CognitiveObject'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person  , probability: 0.5
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 4
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Activity', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Activity'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person  , probability: 0.5
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 4
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism  , probability: 0.5
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 3
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Location'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person']
+correctly identified alignments: 18
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Amount  , probability: 0.3333333333333333
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Amount'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Amount'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person']
+correctly identified alignments: 19
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 3
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization']
+correctly identified alignments: 20
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Relation'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval  , probability: 0.3333333333333333
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval']
+correctly identified alignments: 21
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation  , probability: 1.0
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Location'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Role', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correctly identified alignments: 22
+result size: 2
+total [2] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Role  , probability: 0.25
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Role'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Role'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/wikipedia/d0:Activity  , probability: 0.5
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/wikipedia/d0:Activity'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/wikipedia/d0:Activity'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 3
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/wikipedia/d0:Activity  , probability: 0.3333333333333333
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/wikipedia/d0:Activity'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/wikipedia/d0:Activity'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Location'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection', 'http://www.ontologydesignpatterns.org/ont/wikipedia/d0.owl#Event', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correctly identified alignments: 23
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+return suggested DUL alignment from semantic computation: {''}
+suggested_dul_alignments returned from ontology_alignment:
+{''}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization']
+correctly identified alignments: 24
+result size: 1
+total [1] entities found
+result size: 3
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Abstract'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/wikipedia/d0:Characteristic', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Amount'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization']
+correctly identified alignments: 25
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person']
+correctly identified alignments: 26
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject  , probability: 0.16666666666666666
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject']
+correctly identified alignments: 27
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/wikipedia/d0:Activity', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection', 'http://www.ontologydesignpatterns.org/ont/wikipedia/d0.owl#Event', 'http://www.ontologydesignpatterns.org/ont/wikipedia/d0.owl#System', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Relation'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity']
+correctly identified alignments: 28
+result size: 1
+total [1] entities found
+result size: 6
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person']
+correctly identified alignments: 29
+result size: 1
+total [1] entities found
+result size: 4
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval  , probability: 0.3333333333333333
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval']
+correctly identified alignments: 30
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval  , probability: 0.3333333333333333
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval']
+correctly identified alignments: 31
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Location'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correctly identified alignments: 32
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval']
+correctly identified alignments: 33
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval  , probability: 0.3333333333333333
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval']
+correctly identified alignments: 34
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person']
+correctly identified alignments: 35
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/wikipedia/d0.owl#Event  , probability: 0.25
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/wikipedia/d0.owl#Event'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/wikipedia/d0.owl#Event'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person']
+correctly identified alignments: 36
+result size: 1
+total [1] entities found
+result size: 3
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/wikipedia/d0:Activity  , probability: 0.3333333333333333
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/wikipedia/d0:Activity'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/wikipedia/d0:Activity'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Activity', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Activity'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection  , probability: 0.5
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 3
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person']
+correctly identified alignments: 37
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Location'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/wikipedia/d0:Activity', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection', 'http://www.ontologydesignpatterns.org/ont/wikipedia/d0.owl#Event', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correctly identified alignments: 38
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/d0.owl#Location  , probability: 0.3333333333333333
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval  , probability: 0.3333333333333333
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval']
+correctly identified alignments: 39
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person']
+correctly identified alignments: 40
+result size: 1
+total [1] entities found
+result size: 4
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval  , probability: 0.3333333333333333
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval']
+correctly identified alignments: 41
+result size: 1
+total [1] entities found
+result size: 3
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval  , probability: 0.5
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Personification'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Role  , probability: 1.0
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Role'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Role'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/wikipedia/d0:Activity', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism', 'http://www.ontologydesignpatterns.org/ont/wikipedia/d0.owl#Event'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person']
+correctly identified alignments: 42
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/d0.owl#Location  , probability: 0.14285714285714285
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject'}
+return suggested DUL alignment from semantic computation: {''}
+suggested_dul_alignments returned from ontology_alignment:
+{''}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 3
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization']
+correctly identified alignments: 43
+result size: 1
+total [1] entities found
+result size: 5
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Personification'}
+return suggested DUL alignment from semantic computation: {''}
+suggested_dul_alignments returned from ontology_alignment:
+{''}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Personification'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Personification'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Personification']
+correctly identified alignments: 44
+result size: 1
+total [1] entities found
+result size: 4
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person']
+correctly identified alignments: 45
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation'}
+return suggested DUL alignment from semantic computation: {''}
+suggested_dul_alignments returned from ontology_alignment:
+{''}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval']
+correctly identified alignments: 46
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Location'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/wikipedia/d0:Activity', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Role', 'http://www.ontologydesignpatterns.org/ont/wikipedia/d0.owl#Event', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correctly identified alignments: 47
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection  , probability: 0.2
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 3
+labelled aligned dul classes: {'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Activity', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Activity'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/wikipedia/d0.owl#Event'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 3
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization']
+correctly identified alignments: 48
+result size: 1
+total [1] entities found
+result size: 4
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval  , probability: 0.3333333333333333
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval']
+correctly identified alignments: 49
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Location'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/wikipedia/d0:Activity', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection', 'http://www.ontologydesignpatterns.org/ont/wikipedia/d0.owl#Event', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correctly identified alignments: 50
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Location'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correctly identified alignments: 51
+result size: 2
+total [2] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Location'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/wikipedia/d0:Characteristic', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correctly identified alignments: 52
+result size: 1
+total [1] entities found
+result size: 4
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Location'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/wikipedia/d0.owl#CognitiveEntity  , probability: 0.25
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/wikipedia/d0.owl#CognitiveEntity'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/wikipedia/d0.owl#CognitiveEntity'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description  , probability: 0.3333333333333333
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/wikipedia/d0:Characteristic', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Location'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Role', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/wikipedia/d0.owl#System', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correctly identified alignments: 53
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Location'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Role', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correctly identified alignments: 54
+result size: 1
+total [1] entities found
+result size: 3
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization  , probability: 0.3333333333333333
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization']
+correctly identified alignments: 55
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person']
+correctly identified alignments: 56
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Abstract'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Amount  , probability: 1.0
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Amount'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Amount'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject'}
+suggested_alignment_class from semantic computation: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Relation  , probability: 0.5
+return suggested DUL alignment from semantic computation: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Relation'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Relation'}
+final correctly identified alignment: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+suggested_dul_alignments returned from ontology_alignment:
+{'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism'}
+final correctly identified alignment: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person']
+correctly identified alignments: 57
+correctIdentifiedClasses: 57
+identifiedClasses: 99
+goldstandardClasses: 99
+precision: 0.5757575757575758
+recall: 0.5757575757575758
+f1-measure: 0.5757575757575758

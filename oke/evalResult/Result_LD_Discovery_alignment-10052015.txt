@@ -1,0 +1,849 @@
+training data is loaded!
+result size: 99
+total [99] result returned
+training data is loaded!
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correct alignment by full string matching: ['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correct identified classes: 1
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent']
+correct alignment by full string matching: ['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correct identified classes: 2
+result size: 1
+total [1] entities found
+result size: 4
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 3
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 4
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity']
+correct alignment by full string matching: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity']
+correct identified classes: 3
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+correct alignment by full string matching: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity']
+correct identified classes: 4
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 4
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity']
+correct alignment by full string matching: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity']
+correct identified classes: 5
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Activity', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Activity'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 5
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 4
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Location'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 5
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Personification'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#CognitiveObject'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 3
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval']
+correct alignment by full string matching: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval']
+correct identified classes: 6
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Abstract'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 3
+labelled aligned dul classes: {'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Activity', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Activity'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Personification'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#System'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 3
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correct alignment by full string matching: ['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correct identified classes: 7
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Event']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Event']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 3
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Abstract'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 3
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity']
+correct alignment by full string matching: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity']
+correct identified classes: 8
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+correct alignment by full string matching: ['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correct identified classes: 9
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism']
+correct alignment by full string matching: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism']
+correct identified classes: 10
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalBody']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalBody']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correct alignment by full string matching: ['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correct identified classes: 11
+result size: 1
+total [1] entities found
+result size: 3
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent']
+correct alignment by full string matching: ['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correct identified classes: 12
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Personification'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 3
+labelled aligned dul classes: {'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 3
+labelled aligned dul classes: {'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Activity', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Activity'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity']
+correct alignment by full string matching: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity']
+correct identified classes: 13
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 3
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 2
+total [2] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correct alignment by full string matching: ['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correct identified classes: 14
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correct alignment by full string matching: ['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correct identified classes: 15
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correct alignment by full string matching: ['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correct identified classes: 16
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#BiologicalObject']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#BiologicalObject']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Activity', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Activity'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correct alignment by full string matching: ['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correct identified classes: 17
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval']
+correct alignment by full string matching: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval']
+correct identified classes: 18
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 6
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 3
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correct alignment by full string matching: ['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correct identified classes: 19
+result size: 1
+total [1] entities found
+result size: 4
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 3
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 3
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Activity', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Activity'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 4
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism']
+correct alignment by full string matching: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism']
+correct identified classes: 20
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval']
+correct alignment by full string matching: ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval']
+correct identified classes: 21
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 4
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 2
+total [2] entities found
+result size: 2
+labelled aligned dul classes: {'http://ontologydesignpatterns.org/ont/wikipedia/d0.owl#Location', 'http://www.ontologydesignpatterns.org/ont/d0.owl#Location'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correct alignment by full string matching: ['http://www.ontologydesignpatterns.org/ont/d0.owl#Location']
+correct identified classes: 22
+result size: 1
+total [1] entities found
+result size: 3
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 2
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Personification'}
+linked data suggested alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent']
+suggested_dul_alignments returned from ontology_alignment:
+['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson', 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent']
+correct alignment by full string matching: []
+result size: 1
+total [1] entities found
+result size: 1
+labelled aligned dul classes: {'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval'}
+suggested_dul_alignments returned from ontology_alignment:
+set()
+correct alignment by full string matching: []
+correctIdentifiedClasses: 22
+identifiedClasses: 62
+goldstandardClasses: 99
+precision: 0.3548387096774194
+recall: 0.2222222222222222
+f1-measure: 0.27329192546583847
