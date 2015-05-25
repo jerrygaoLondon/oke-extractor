@@ -13,15 +13,16 @@ oke-challenge (https://github.com/anuzzolese/oke-challenge) Task 2: Class Induct
 1) install python 3+<br/>
 2) install libraries:<br/>
 
-	- sudo pip3 install flask<br/>
-	- sudo pip3 install -U nltk<br/>
-	- sudo pip3 install -U numpy scipy scikit-learn<br/>
-	- sudo pip3 install -U distance<br/>
+	$ sudo pip3 install flask
+	$ sudo pip3 install -U nltk
+	$ sudo pip3 install -U numpy scipy scikit-learn
+	$ sudo pip3 install -U distance
 
-	- ===Download NLTK data=====
-	- Run the Python interpreter and type the commands:
-	- - <pre><code>import nltk</pre>
-	- - <pre><code>nltk.download()</code></pre>
+	===Download NLTK data=====
+	Run the Python interpreter and type the commands:
+		import nltk
+		nltk.download()
+3) need the access to DBpedia
 
 Test
 ========================
