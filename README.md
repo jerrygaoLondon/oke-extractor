@@ -37,7 +37,8 @@ Test
     <br/>
 	This will start a web service via localhost:5000 with a RESTful API "http://localhost:5000/extract". API accepts N3 formatted NIF data input and output enriched N3 formatted NIF data. oke.oak.TestOKEConceptRecogniserWS.py gives an example how to test the API.
 	
-	
+	Example test via cURL:
+	<pre><code>curl -i -X POST http://localhost:5000/extract -H "Content-Type: text/xml" --data-binary "@path-to-file\task2_test.ttl"</code></pre>
 	
 	
   

@@ -16,7 +16,7 @@ class DBpediaQuerier(object):
         Constructor
         '''
     
-    def dbpedia_query_rdftypes(self, entity_dbpedia_URI, endpoint="http://galaxy.dcs.shef.ac.uk:8893/sparql"):
+    def dbpedia_query_rdftypes(self, entity_dbpedia_URI, endpoint="http://dbpedia.org/sparql"):
         '''
         Linked Data Discovery for alignment by DBpedia Entity URI
         
@@ -33,7 +33,7 @@ class DBpediaQuerier(object):
             entity_rdftypes.add(results['type']['value'])
         return entity_rdftypes
     
-    def dbpedia_query_dcterm_subject(self, entity_dbpedia_URI, endpoint="http://galaxy.dcs.shef.ac.uk:8893/sparql"):
+    def dbpedia_query_dcterm_subject(self, entity_dbpedia_URI, endpoint="http://dbpedia.org/sparql"):
         '''
         query rdf types in dbpedia dataset
         return rdf type URI list
@@ -46,7 +46,7 @@ class DBpediaQuerier(object):
             entity_rdftypes.add(results['subject_label']['value'])
         return entity_rdftypes
      
-    def dbpedia_query(self,sparql_query,endpoint="http://galaxy.dcs.shef.ac.uk:8893/sparql"):
+    def dbpedia_query(self,sparql_query,endpoint="http://dbpedia.org/sparql"):
         '''
         return results in json format
         example:
