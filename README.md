@@ -4,10 +4,15 @@ Concept Recognition and Interlink demo
 
 oke-challenge (https://github.com/anuzzolese/oke-challenge) Task 2: Class Induction and entity typing for Vocabulary and Knowledge Base enrichment.
 
-(i) identify the type(s) of the given entity as they are expressed in the given definition, 
-(ii) create a owl:Class statement for defining each of them as a new class in the target knowledge base, 
-(iii) create a rdf:type statement between the given entity and the new created classes, and 
-(iv) align the identified types, if a correct alignment is available, to a set of given types.
+- (i) identify the type(s) of the given entity as they are expressed in the given definition, 
+- (ii) create a owl:Class statement for defining each of them as a new class in the target knowledge base, 
+- (iii) create a rdf:type statement between the given entity and the new created classes, and 
+- (iv) align the identified types, if a correct alignment is available, to a set of given types.
+
+Paper:
+=====
+
+J. Gao and S. Mazumdar. Exploiting linked open data to uncover entity type. In Proceedings of the OKE Challenge 2015 co-located with the 12th Extended Semantic Web Conference (ESWC 2015), 2015.
 
 **Prerequisite to run:**<br/>
 1) install python 3+<br/>
@@ -39,6 +44,9 @@ Test
 	
 	Example test via cURL:
 	<pre><code>curl -i -X POST http://localhost:5000/extract -H "Content-Type: text/xml" --data-binary "@path-to-file\task2_test.ttl"</code></pre>
-	
+
+Official Result
+===============
+Official results is published in https://github.com/anuzzolese/oke-challenge. Annotator related to this work is OAK@Sheffield
 	
   
