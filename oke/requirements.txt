@@ -1,0 +1,10 @@
+#oke-extractor
+
+flask
+nltk
+numpy scipy scikit-learn
+distance
+rdflib
+SPARQLWrapper
+
+# Download NLTK data
